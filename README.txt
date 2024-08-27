@@ -10,7 +10,7 @@ License information can be found in license.txt
 
 Authors of source code
 ----------------------
-Originally dungeon_loot mod by sfan5 (MIT)
+Original dungeon_loot mod by sfan5 (MIT)
 Modified by karlexceed
 
 Authors of media (textures)
