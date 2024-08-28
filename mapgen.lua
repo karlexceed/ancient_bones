@@ -71,8 +71,8 @@ local function find_walls(cpos, is_temple)
 end
 
 local function populate_bones(pos, rand, dungeontype)
-	minetest.chat_send_all("bones placed at " .. minetest.pos_to_string(pos) .. " [" .. dungeontype .. "]")
-	minetest.add_node(vector.add(pos, {x=0, y=1, z=0}), {name="default:torch", param2=1})
+	--minetest.chat_send_all("bones placed at " .. minetest.pos_to_string(pos) .. " [" .. dungeontype .. "]")
+	--minetest.add_node(vector.add(pos, {x=0, y=1, z=0}), {name="default:torch", param2=1})
 
 	local item_list = ancient_bones._internal_get_loot(pos.y, dungeontype)
 	-- take random (partial) sample of all possible items
