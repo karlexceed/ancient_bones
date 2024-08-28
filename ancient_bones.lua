@@ -3,7 +3,7 @@
 -- Load support for MT game translation.
 local S = minetest.get_translator("ancient_bones")
 
-ancient_bones = {}
+ancient_bones_object = {}
 
 local bones_formspec =
 	"size[8,9]" ..
@@ -69,7 +69,7 @@ local bones_def = {
 	end,
 }
 
-function ancient_bones.register_ancient_bones(d)
+function ancient_bones_object.register_ancient_bones(d)
 	local def = table.copy(d)
 	def.on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
@@ -82,4 +82,4 @@ function ancient_bones.register_ancient_bones(d)
 	minetest.register_node("ancient_bones:ancient_bones", def)
 end
 
-ancient_bones.register_ancient_bones(bones_def)
+ancient_bones_object.register_ancient_bones(bones_def)
