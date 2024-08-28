@@ -5,6 +5,7 @@ Only works if dungeons are actually enabled in mapgen flags.
 
 Based on the vanilla minetest game's dungeon_loot mod, with the bones textures
 from the bones mod.
+The pool of possible loot has more tools than the normal chests.
 
 License information can be found in license.txt
 
