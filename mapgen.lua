@@ -74,9 +74,9 @@ local function populate_bones(pos, rand, dungeontype)
 	minetest.chat_send_all("bones placed at " .. minetest.pos_to_string(pos) .. " [" .. dungeontype .. "]")
 	minetest.add_node(vector.add(pos, {x=0, y=1, z=0}), {name="default:torch", param2=1})
 
-	local item_list = bones_loot._internal_get_loot(pos.y, dungeontype)
+	local item_list = ancient_bones._internal_get_loot(pos.y, dungeontype)
 	-- take random (partial) sample of all possible items
-	local sample_n = math.min(#item_list, bones_loot.STACKS_PER_BONES_MAX)
+	local sample_n = math.min(#item_list, ancient_bones.STACKS_PER_BONES_MAX)
 	item_list = random_sample(rand, item_list, sample_n)
 
 	-- apply chances / randomized amounts and collect resulting items
@@ -146,7 +146,7 @@ minetest.register_on_generated(function(minp, maxp, blockseed)
 		end
 	end
 
-	local num_bones = rand:next(bones_loot.BONES_MIN, bones_loot.BONES_MAX)
+	local num_bones = rand:next(ancient_bones.BONES_MIN, ancient_bones.BONES_MAX)
 	num_bones = math.min(#candidates, num_bones)
 	local rooms = random_sample(rand, candidates, num_bones)
 
@@ -166,7 +166,7 @@ minetest.register_on_generated(function(minp, maxp, blockseed)
 		if minetest.get_node(bonespos).name == "air" then
 			-- make it face inwards to the room
 			local facedir = minetest.dir_to_facedir(vector.multiply(wall.facing, -1))
-			minetest.add_node(bonespos, {name = "bones_loot:ancient_bones", param2 = facedir})
+			minetest.add_node(bonespos, {name = "ancient_bones:ancient_bones", param2 = facedir})
 			populate_bones(bonespos, PcgRandom(noise3d_integer(noise, bonespos)), room.type)
 		end
 	end

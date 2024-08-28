@@ -1,7 +1,7 @@
--- bones_loot/ancient_bones.lua
+-- ancient_bones/ancient_bones.lua
 
 -- Load support for MT game translation.
-local S = minetest.get_translator("bones_loot")
+local S = minetest.get_translator("ancient_bones")
 
 ancient_bones = {}
 
@@ -69,9 +69,7 @@ local bones_def = {
 	end,
 }
 
---minetest.register_node("bones_loot:ancient_bones", bones_def)
-
-function default.chest.register_ancient_bones(d)
+function ancient_bones.register_ancient_bones(d)
 	local def = table.copy(d)
 	def.on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
@@ -81,7 +79,7 @@ function default.chest.register_ancient_bones(d)
 		inv:set_size("main", 8*4)
 	end
 	
-	minetest.register_node("bones_loot:ancient_bones", def)
+	minetest.register_node("ancient_bones:ancient_bones", def)
 end
 
-default.chest.register_ancient_bones(bones_def)
+ancient_bones.register_ancient_bones(bones_def)

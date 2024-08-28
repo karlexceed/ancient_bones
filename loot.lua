@@ -1,7 +1,7 @@
 -- Loot from the `default` mod is registered here,
 -- with the rest being registered in the respective mods
 
-bones_loot.registered_loot = {
+ancient_bones.registered_loot = {
 	-- various items
 	{name = "default:stick", chance = 0.6, count = {3, 8}},
 	{name = "default:flint", chance = 0.4, count = {1, 3}},
@@ -43,19 +43,19 @@ bones_loot.registered_loot = {
 	{name = "default:mese", chance = 0.15, y = {-32768, -512}},
 }
 
-function bones_loot.register(t)
+function ancient_bones.register(t)
 	if t.name ~= nil then
 		t = {t} -- single entry
 	end
 	for _, loot in ipairs(t) do
-		table.insert(bones_loot.registered_loot, loot)
+		table.insert(ancient_bones.registered_loot, loot)
 	end
 end
 
-function bones_loot._internal_get_loot(pos_y, dungeontype)
+function ancient_bones._internal_get_loot(pos_y, dungeontype)
 	-- filter by y pos and type
 	local ret = {}
-	for _, l in ipairs(bones_loot.registered_loot) do
+	for _, l in ipairs(ancient_bones.registered_loot) do
 		if l.y == nil or (pos_y >= l.y[1] and pos_y <= l.y[2]) then
 			if l.types == nil or table.indexof(l.types, dungeontype) ~= -1 then
 				table.insert(ret, l)
