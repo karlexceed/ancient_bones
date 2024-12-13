@@ -1,7 +1,7 @@
 -- ancient_bones/ancient_bones.lua
 
 -- Load support for MT game translation.
-local S = minetest.get_translator("ancient_bones")
+local S = core.get_translator("ancient_bones")
 
 ancient_bones_object = {}
 
@@ -29,20 +29,20 @@ local bones_def = {
 	sounds = default.node_sound_gravel_defaults(),
 
 	on_metadata_inventory_take = function(pos, listname, index, stack, player)
-		local meta = minetest.get_meta(pos)
+		local meta = core.get_meta(pos)
 		if meta:get_inventory():is_empty("main") then
 			local inv = player:get_inventory()
 			if inv:room_for_item("main", {name = "bones:bones"}) then
 				inv:add_item("main", {name = "bones:bones"})
 			else
-				minetest.add_item(pos, "bones:bones")
+				core.add_item(pos, "bones:bones")
 			end
-			minetest.remove_node(pos)
+			core.remove_node(pos)
 		end
 	end,
 
 	on_punch = function(pos, node, player)
-		local inv = minetest.get_meta(pos):get_inventory()
+		local inv = core.get_meta(pos):get_inventory()
 		local player_inv = player:get_inventory()
 		local has_space = true
 
@@ -62,9 +62,9 @@ local bones_def = {
 			if player_inv:room_for_item("main", {name = "bones:bones"}) then
 				player_inv:add_item("main", {name = "bones:bones"})
 			else
-				minetest.add_item(pos,"bones:bones")
+				core.add_item(pos,"bones:bones")
 			end
-			minetest.remove_node(pos)
+			core.remove_node(pos)
 		end
 	end,
 }
@@ -72,14 +72,14 @@ local bones_def = {
 function ancient_bones_object.register_ancient_bones(d)
 	local def = table.copy(d)
 	def.on_construct = function(pos)
-		local meta = minetest.get_meta(pos)
+		local meta = core.get_meta(pos)
 		meta:set_string("infotext", S("Ancient Bones"))
 		meta:set_string("formspec", bones_formspec)
 		local inv = meta:get_inventory()
 		inv:set_size("main", 8*4)
 	end
 	
-	minetest.register_node("ancient_bones:ancient_bones", def)
+	core.register_node("ancient_bones:ancient_bones", def)
 end
 
 ancient_bones_object.register_ancient_bones(bones_def)

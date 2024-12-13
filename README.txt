@@ -1,4 +1,4 @@
-ancient_bones
+Ancient Bones
 =====
 Adds randomly generated bones with some "loot" to generated dungeons.
 Only works if dungeons are actually enabled in mapgen flags.
