@@ -76,7 +76,7 @@ local function populate_bones(pos, rand, dungeontype)
 
 	local item_list = ancient_bones._internal_get_loot(pos.y, dungeontype)
 	-- take random (partial) sample of all possible items
-	local sample_n = math.min(#item_list, ancient_bones.STACKS_PER_BONES_MAX)
+	local sample_n = math.min(#item_list, ancient_bones.config.stacks_per_bones)
 	item_list = random_sample(rand, item_list, sample_n)
 
 	-- apply chances / randomized amounts and collect resulting items
@@ -146,7 +146,7 @@ core.register_on_generated(function(minp, maxp, blockseed)
 		end
 	end
 
-	local num_bones = rand:next(ancient_bones.BONES_MIN, ancient_bones.BONES_MAX)
+	local num_bones = rand:next(ancient_bones.config.min_bones, ancient_bones.config.max_bones)
 	num_bones = math.min(#candidates, num_bones)
 	local rooms = random_sample(rand, candidates, num_bones)
 

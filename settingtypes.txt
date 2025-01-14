@@ -1,0 +1,8 @@
+# Minimum bones: The minimum number of bones per mapgen chunk
+ancient_bones.min_bones (Minimum bones count) int 0
+
+# Maximum bones: The maximum number of bones per mapgen chunk
+ancient_bones.max_bones (Maximum bones count) int 2
+
+# Maximum loot stacks: The maximum number of loot stacks per bones (32 max)
+ancient_bones.stacks_per_bones (Maximum loot stacks count) int 8
